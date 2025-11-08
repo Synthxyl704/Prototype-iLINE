@@ -1,48 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SyncLink [PROTOTYPE]</title>
+    <title>SyncLink</title>
     <link rel="stylesheet" href="style.css">
     <script src="work.js"></script>
 </head>
 
 <body>
-    <!-- <div class="glowElement1"></div>
-    <div class="glowElement2"></div> -->
+    <div class="app-container">
+        <!-- keep this pls -->
+        <div class="glow-container" id="glowContainer">
+            <div class="glow-effect glow-top-left"></div>
+            <div class="glow-effect glow-top-right"></div>
+        </div>
 
-    <nav class="navbar">
-        <a href="#" class="nav-item">OS chat</a>
-        <a href="#" class="nav-item">DMs</a>
-        <a href="#" class="nav-item">Settings</a>
-        <a href="#" class="nav-item">Opt X</a>
-        <a href="#" class="nav-item">Opt Y</a>
-    </nav>
+        <!-- bootleg navbar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">SyncLink</div>
+            <nav class="sidebar-nav">
+                <button class="nav-item active" data-view="chat">
+                    <span class="nav-icon">◆</span> M-OS room
+                </button>
+                <button class="nav-item" data-view="settings">
+                    <span class="nav-icon">⚙</span> Settings
+                </button>
+                <button class="nav-item" data-view="dms">
+                    <span class="nav-icon">✉</span> DMs
+                </button>
+            </nav>
+        </aside>
 
-    <div class="main-content">
-        <div class="title-bar">
-            <h2>SyncLink</h2>
+        <!-- main chat area -->
+        <main class="chat-container" id="chatView">
+            <div class="chat-header">
+                <h1>Main open source room</h1>
+            </div>
+            <div class="messages-area" id="messagesArea"></div>
+            <div class="input-area">
+                <input 
+                    type="text" 
+                    id="messageInput" 
+                    placeholder="type to SyncLink" 
+                    class="message-input"
+                >
+                <button id="sendBtn" class="send-button">SEND</button>
+            </div>
+        </main>
+
+        <!-- settings view  -->
+        <div class="settings-container hidden" id="settingsView">
+            <div class="settings-header">
+                <h1>Settings</h1>
+            </div>
+            <div class="settings-content">
+                <div class="setting-group">
+                    <label for="usernameInput">Username:</label>
+                    <input type="text" id="usernameInput" class="setting-input" placeholder="Enter username">
+                </div>
+
+                <div class="setting-group">
+                    <label for="themeToggle">Theme:</label>
+                    <select id="themeToggle" class="setting-select">
+                        <option value="dark">Dark</option>
+                        <option value="light">Light</option>
+                    </select>
+                </div>
+
+                <div class="setting-group">
+                    <label for="fontSelect">Font:</label>
+                    <select id="fontSelect" class="setting-select">
+                        <option value="mono">Monospace (Default)</option>
+                        <option value="sans">Sans-serif</option>
+                        <option value="serif">Serif</option>
+                    </select>
+                </div>
+
+                <div class="setting-group">
+                    <label for="borderRadiusToggle">Sharp Edges:</label>
+                    <input type="checkbox" id="borderRadiusToggle" class="setting-checkbox" checked>
+                </div>
+
+                <div class="setting-group">
+                    <label for="backgroundGlowToggle">Background Glow Effects:</label>
+                    <input type="checkbox" id="backgroundGlowToggle" class="setting-checkbox" checked>
+                </div>
+
+                <div class="setting-group">
+                    <label for="showNameToggle">Show Username in Messages:</label>
+                    <input type="checkbox" id="showNameToggle" class="setting-checkbox" checked>
+                </div>
+
+                <div class="setting-group">
+                    <label for="timezoneSelect">Timezone:</label>
+                    <select id="timezoneSelect" class="setting-select">
+                        <option value="UTC">UTC</option>
+                        <option value="GMT">GMT (UTC+0)</option>
+                        <option value="IST">IST (UTC+5:30)</option>
+                        <option value="JST">JST (UTC+9)</option>
+                    </select>
+                    <!-- so many fucking divs -->
+                </div>
+
+                <div class="setting-group">
+                    <label for="bioInput">Bio:</label>
+                    <textarea id="bioInput" class="setting-textarea" placeholder="Enter your bio..."></textarea>
+                </div>
+
+                <button id="clearChatBtn" class="clear-button">CLEAR CHAT HISTORY</button>
+            </div>
         </div>
-        <div class="chat-area" id="chat-area">
-            <p>Messages are stored locally and will be lost if local storage is cleared.</p>
-            <br>
-            <hr>
-            <br>
+
+        <!-- DMs -->
+        <div class="dms-container hidden" id="dmsView">
+            <div class="dms-header">
+                <h1>Direct Messages</h1>
+            </div>
+            <div class="dms-content" id="dmsList">
+                <p class="empty-state">No DMs yet</p>
+            </div>
         </div>
-        <div class="input-area">
-            <input type="text" class="chat-input" id="chat-input" placeholder="Type some shit...">
-            <button class="send-button" id="send-button">Send</button>
-        </div>
+
+        <!-- C-Active -->
+        <aside class="active-users">
+            <div class="active-header">C - Active</div>
+            <div class="active-list" id="activeList"></div>
+        </aside>
     </div>
-
-    <aside class="active-users">
-        <h3>Active Users</h3>
-        <ul id="active-list">
-            <li>._#IsoAris7_.</li>
-        </ul>
-    </aside>
-
-    <script src="app.js"></script>
 </body>
 </html>
